@@ -1,23 +1,21 @@
 # Getting started with Vaadin CDI
 
-This is a short step by step guide to convert a basic servlet based Vaadin project into a
+In this is a short step by step guide to convert a basic servlet based Vaadin project into a
 CDI deployed Java EE 7 Web Profile project.
-
-This is how it goes:
 
 ### 1. Create a project using archetype
 
-There isn't a Vaadin CDI archetype available yet, but the plain servlet archetype is really easy to convert into CDI (Java EE 7) project. Start by creating a project using vaadin-archetype-application in your favourite IDE. If you need help for this, follow the part 1 in Vaadin Tutorial.
+There isn't a Vaadin CDI archetype available yet, but the plain servlet archetype is really easy to convert into CDI (Java EE 7) project. Start by creating a project using vaadin-archetype-application in your favorite IDE. If you need help for this, follow the part 1 in Vaadin Tutorial.
 
 ### 2. Update dependencies
 
-Next change the servlet API into java-ee-web and add vaadin-cdi dependency. As Jetty project provides only basic servlet container, it is better also switch to for example tomee-maven-plugin, if you want to test your app via Maven (mvn package tomee:run).
+Next, change the servlet API into java-ee-web and add vaadin-cdi dependency. As Jetty provides only basic servlet container, it is also better switch to for example tomee-maven-plugin, if you want to test your app via Maven (mvn package tomee:run).
 
 [See the changes](https://github.com/mstahv/vaadin-cdi-101/commit/7a8b1490436136cac11b62ee5e3026ccca441f48)
 
 ### 3. Remove the manual servlet declaration and annotate the UI
 
-With Vaadin CDI you don't need to manually declare the servlet. Instead, a context listener seeks to classpath for @CDIUI annotated classes and tackles deployment configuration automatically. So add the @CDIUI to the MyUI class and remove the obsolete servlet declaration.
+With Vaadin CDI you don't need to declare the servlet manually. Instead, a context listener seeks the classpath for @CDIUI annotated classes and tackles deployment configuration automatically. So add the @CDIUI to the MyUI class and remove the obsolete servlet declaration.
 
 [See the changes](https://github.com/mstahv/vaadin-cdi-101/commit/816a52a77f2c8d307c5fe4b27362f06941977b45)
 
