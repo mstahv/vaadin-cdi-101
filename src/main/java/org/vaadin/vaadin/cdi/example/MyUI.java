@@ -9,6 +9,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import javax.inject.Inject;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser
@@ -22,6 +23,8 @@ import com.vaadin.ui.VerticalLayout;
 @Theme("mytheme")
 @CDIUI("")
 public class MyUI extends UI {
+    
+    @Inject HelloService helloService;
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -32,8 +35,7 @@ public class MyUI extends UI {
 
         Button button = new Button("Click Me");
         button.addClickListener(e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue()
-                    + ", it works!"));
+            layout.addComponent(new Label(helloService.sayHi(name.getValue())));
         });
 
         layout.addComponents(name, button);
